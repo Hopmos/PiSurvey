@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Network Survey</title>
+    <style>
+        body {
+            background-color: #800080; /* Purple background color */
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #660066; /* Darker purple header background */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        button {
+            background-color: #4CAF50; /* Green button background */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px; /* Add some space between the button and the form fields */
+        }
+        button:hover {
+            background-color: #3e8e41; /* Darker green button hover background */
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-bottom: 10px;
+            color: #fff; /* White font color for questions */
+        }
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pi Network Survey</h1>
+    </header>
+    <main>
+        <form id="surveyForm">
+            <h2>Demographic Questions</h2>
+            <label for="age">1. What is your age range?</label>
+            <select id="age" name="age" required>
+                <option value="">Select age range</option>
+                <option value="18-24">18-24</option>
+                <option value="25-34">25-34</option>
+                <option value="35-44">35-44</option>
+                <option value="45-54">45-54</option>
+                <option value="55+">55+</option>
+            </select>
+
+            <label for="occupation">2. What is your occupation?</label>
+            <select id="occupation" name="occupation" required>
+                <option value="">Select occupation</option>
+                <option value="Student">Student</option>
+                <option value="Working Professional">Working Professional</option>
+                <option value="Entrepreneur">Entrepreneur</option>
+                <option value="Retired">Retired</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="heard-about-pi">3. How did you hear about Pi Network?</label>
+            <select id="heard-about-pi" name="heard-about-pi" required>
+                <option value="">Select option</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Online Forum">Online Forum</option>
+                <option value="Friend/Family">Friend/Family</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button type="submit">Next</button>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Validate form fields
+            const age = document.getElementById('age').value;
+            const occupation = document.getElementById('occupation').value;
+            const heardAboutPi = document.getElementById('heard-about-pi').value;
+
+            if (!age || !occupation || !heardAboutPi) {
+                alert('Please fill out all fields before proceeding.');
+                return;
+            }
+
+            console.log('Form submitted at:', new Date().toISOString());
+            window.location.href = 'form2.html'; // Redirect to form2.html
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Completion</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .message {
+            font-size: 24px;
+            color: #4a1f6e;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+        .seek-bar-container {
+            position: relative;
+            width: 70px;
+            height: 70px;
+        }
+        .seek-bar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(#4a1f6e 0%, #4a1f6e var(--progress, 0deg), #e0d7f0 var(--progress, 0deg), #e0d7f0 360deg);
+            position: relative;
+        }
+        .seek-bar::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            right: 10%;
+            bottom: 10%;
+            border-radius: 50%;
+            background-color: #fff;
+            z-index: 1;
+        }
+        .seek-bar::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: #4a1f6e;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 80%;
+        }
+        .modal-content p {
+            font-size: 18px;
+            color: #4a1f6e;
+            margin-bottom: 20px;
+        }
+        .modal-content button {
+            background-color: #4a1f6e;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .modal-content button:hover {
+            background-color: #5b2a8b;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        Congratulations 🎉 <br>
+        You have successfully completed the survey. Your input has been recorded and we appreciate the time you took to share your thoughts with us.
+    </div>
+    <div class="seek-bar-container">
+        <div class="seek-bar"></div>
+    </div>
+    <div class="modal" id="closeModal">
+        <div class="modal-content">
+            <p>Thank you for participating! Click OK to exit the site.</p>
+            <button id="okButton">OK</button>
+        </div>
+    </div>
+
+    <script>
+        const seekBar = document.querySelector('.seek-bar');
+        const modal = document.getElementById('closeModal');
+        const okButton = document.getElementById('okButton');
+        let progress = 0;
+        const totalDuration = 10000; // 5 seconds in milliseconds
+        const startTime = Date.now(); // 09:15 PM WAT on August 10, 2025
+
+        function animate() {
+            const elapsed = Date.now() - startTime;
+            if (elapsed < totalDuration) {
+                progress = (elapsed / totalDuration) * 360; // Calculate progress from 0 to 360 degrees
+                seekBar.style.setProperty('--progress', `${progress}deg`);
+                requestAnimationFrame(animate);
+            } else {
+                // Hide the seek bar after 5 seconds (09:20 PM WAT)
+                document.querySelector('.seek-bar-container').style.display = 'none';
+                console.log('Seek bar hidden at:', new Date().toISOString());
+                // Show the modal
+                modal.style.display = 'flex';
+            }
+        }
+
+        // Handle OK button click to redirect
+        okButton.addEventListener('click', function() {
+            window.location.href = 'https://google.com'; // Redirect to webpage
+        });
+
+        // Start the animation
+        requestAnimationFrame(animate);
+        console.log('Seek bar animation started at:', new Date().toISOString());
+    </script>
+</body>
+</html>

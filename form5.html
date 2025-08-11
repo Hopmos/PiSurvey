@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Network Survey</title>
+    <style>
+        body {
+            background-color: #800080; /* Purple background color */
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #660066; /* Darker purple header background */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        button {
+            background-color: #4CAF50; /* Green button background */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px; /* Add some space between the button and the form fields */
+        }
+        button:hover {
+            background-color: #3e8e41; /* Darker green button hover background */
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-bottom: 10px;
+            color: #fff; /* White font color for questions */
+        }
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pi Network Survey</h1>
+    </header>
+    <main>
+        <form id="surveyForm">
+            <h2>Reward-related Questions</h2>
+            <label for="reward-type">1. What type of reward would you prefer for participating in this survey?</label>
+            <select id="reward-type" name="reward-type" required>
+                <option value="">Select reward type</option>
+                <option value="Pi tokens">Pi tokens</option>
+                <option value="Discounts on future Pi purchases">Discounts on future Pi purchases</option>
+                <option value="Exclusive access to Pi Network events">Exclusive access to Pi Network events</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="reward-amount">2. How much Pi would you consider a fair reward for participating in this survey?</label>
+            <select id="reward-amount" name="reward-amount" required>
+                <option value="">Select reward amount</option>
+                <option value="Less than 10 Pi">Less than 10 Pi</option>
+                <option value="10-50 Pi">10-50 Pi</option>
+                <option value="50-100 Pi">50-100 Pi</option>
+                <option value="More than 100 Pi">More than 100 Pi</option>
+            </select>
+
+            <button type="submit">Confirm Wallet</button>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Validate form fields
+            const rewardType = document.getElementById('reward-type').value;
+            const rewardAmount = document.getElementById('reward-amount').value;
+
+            if (!rewardType || !rewardAmount) {
+                alert('Please fill out all fields before proceeding.');
+                return;
+            }
+
+            console.log('Form submitted at:', new Date().toISOString());
+            window.location.href = 'seek bar.html'; // Redirect to seek bar.html
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Network Survey</title>
+    <style>
+        body {
+            background-color: #800080; /* Purple background color */
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #660066; /* Darker purple header background */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        button {
+            background-color: #4CAF50; /* Green button background */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px; /* Add some space between the button and the form fields */
+        }
+        button:hover {
+            background-color: #3e8e41; /* Darker green button hover background */
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-bottom: 10px;
+            color: #fff; /* White font color for questions */
+        }
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pi Network Survey</h1>
+    </header>
+    <main>
+        <form id="surveyForm">
+            <h2>Purchase and Reward Questions</h2>
+            <label for="buy-pi">1. Would you be interested in buying Pi from other Pioneers?</label>
+            <select id="buy-pi" name="buy-pi" required>
+                <option value="">Select option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="pi-amount">2. If yes, how much Pi would you be willing to buy?</label>
+            <select id="pi-amount" name="pi-amount" required>
+                <option value="">Select amount</option>
+                <option value="Less than 100 Pi">Less than 100 Pi</option>
+                <option value="100-500 Pi">100-500 Pi</option>
+                <option value="500-1000 Pi">500-1000 Pi</option>
+                <option value="More than 1000 Pi">More than 1000 Pi</option>
+            </select>
+
+            <label for="motivation">3. What would motivate you to buy Pi from other Pioneers?</label>
+            <select id="motivation" name="motivation" required>
+                <option value="">Select motivation</option>
+                <option value="Discounts">Discounts</option>
+                <option value="Rewards">Rewards</option>
+                <option value="Convenience">Convenience</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button type="submit">Next</button>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Validate form fields
+            const buyPi = document.getElementById('buy-pi').value;
+            const piAmount = document.getElementById('pi-amount').value;
+            const motivation = document.getElementById('motivation').value;
+
+            if (!buyPi || !piAmount || !motivation) {
+                alert('Please fill out all fields before proceeding.');
+                return;
+            }
+
+            console.log('Form submitted at:', new Date().toISOString());
+            window.location.href = 'form4.html'; // Redirect to form4.html
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Network Survey</title>
+    <style>
+        body {
+            background-color: #800080; /* Purple background color */
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #660066; /* Darker purple header background */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        button {
+            background-color: #4CAF50; /* Green button background */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px; /* Add some space between the button and the form fields */
+        }
+        button:hover {
+            background-color: #3e8e41; /* Darker green button hover background */
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-bottom: 10px;
+            color: #fff; /* White font color for questions */
+        }
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pi Network Survey</h1>
+    </header>
+    <main>
+        <form id="surveyForm">
+            <h2>Pi Network Usage Questions</h2>
+            <label for="mining-period">1. How long have you been mining Pi?</label>
+            <select id="mining-period" name="mining-period" required>
+                <option value="">Select mining period</option>
+                <option value="Less than 3 months">Less than 3 months</option>
+                <option value="3-6 months">3-6 months</option>
+                <option value="6-12 months">6-12 months</option>
+                <option value="More than 1 year">More than 1 year</option>
+            </select>
+
+            <label for="mining-hours">2. How many hours do you dedicate to mining Pi per week?</label>
+            <select id="mining-hours" name="mining-hours" required>
+                <option value="">Select hours</option>
+                <option value="Less than 1 hour">Less than 1 hour</option>
+                <option value="1-5 hours">1-5 hours</option>
+                <option value="5-10 hours">5-10 hours</option>
+                <option value="More than 10 hours">More than 10 hours</option>
+            </select>
+
+            <label for="pi-usage">3. What do you primarily use Pi Network for?</label>
+            <select id="pi-usage" name="pi-usage" required>
+                <option value="">Select option</option>
+                <option value="Earning Pi">Earning Pi</option>
+                <option value="Learning about blockchain/crypto">Learning about blockchain/crypto</option>
+                <option value="Community engagement">Community engagement</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button type="submit">Next</button>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Validate form fields
+            const miningPeriod = document.getElementById('mining-period').value;
+            const miningHours = document.getElementById('mining-hours').value;
+            const piUsage = document.getElementById('pi-usage').value;
+
+            if (!miningPeriod || !miningHours || !piUsage) {
+                alert('Please fill out all fields before proceeding.');
+                return;
+            }
+
+            console.log('Form submitted at:', new Date().toISOString());
+            window.location.href = 'form3.html'; // Redirect to form3.html
+        });
+    </script>
+</body>
+</html>

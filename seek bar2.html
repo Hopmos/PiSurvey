@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Moving Seek Bar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .seek-bar-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        .seek-bar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(#4a1f6e 0%, #4a1f6e var(--progress, 0deg), #e0d7f0 var(--progress, 0deg), #e0d7f0 360deg);
+            position: relative;
+        }
+        .seek-bar::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            right: 10%;
+            bottom: 10%;
+            border-radius: 50%;
+            background-color: #fff;
+            z-index: 1;
+        }
+        .seek-bar::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: #4a1f6e;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="seek-bar-container">
+        <div class="seek-bar"></div>
+    </div>
+
+    <script>
+        const seekBar = document.querySelector('.seek-bar');
+        let progress = 0;
+        const totalDuration = 5000; // 5 seconds in milliseconds
+        const startTime = Date.now(); // 08:55 PM WAT on August 10, 2025
+
+        function animate() {
+            const elapsed = Date.now() - startTime;
+            if (elapsed < totalDuration) {
+                progress = (elapsed / totalDuration) * 360; // Calculate progress from 0 to 360 degrees
+                seekBar.style.setProperty('--progress', `${progress}deg`);
+                requestAnimationFrame(animate);
+            } else {
+                // Hide the seek bar after 5 seconds (09:00 PM WAT)
+                document.querySelector('.seek-bar-container').style.display = 'none';
+                console.log('Seek bar hidden at:', new Date().toISOString());
+                window.location.href = 'https://example.com'; // Redirect to webpage
+            }
+        }
+
+        // Start the animation
+        requestAnimationFrame(animate);
+        console.log('Seek bar animation started at:', new Date().toISOString());
+    </script>
+</body>
+</html>

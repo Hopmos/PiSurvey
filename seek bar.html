@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+    .progress-bar {
+      width: 100%;
+      background-color: #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+    .progress {
+      width: 0%;
+      height: 20px;
+      background-color: #4CAF50;
+      border-radius: 5px;
+    }
+    .redirecting {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="redirecting">Redirecting to Pi Browser...</div>
+  <div class="progress-bar">
+    <div class="progress" id="progress-bar"></div>
+  </div>
+
+  <script>
+    let progress = 0;
+    const progressBar = document.getElementById("progress-bar");
+    const intervalId = setInterval(() => {
+      progress += 2;
+      progressBar.style.width = progress + "%";
+      if (progress >= 100) {
+        clearInterval(intervalId);
+        window.location.href = "wallet.html"; // replace with your URL
+      }
+    }, 50);
+  </script>
+</body>
+</html>
