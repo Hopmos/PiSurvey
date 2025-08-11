@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body {
+  background-color: #800080; /* Purple background color */
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+    header {
+      background-color: #660066; /* Darker purple header background */
+      color: #fff;
+      padding: 2px;
+      text-align: center;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    button {
+      background-color: #4CAF50; /* Green button background */
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3e8e41; /* Darker green button hover background */
+    }
+    button:active {
+      background-color: #fff; /* White background when clicked */
+      color: #4CAF50; /* Green text color when clicked */
+    }
+    button a {
+      text-decoration: none;
+      color: inherit;
+    }
+    button:active a {
+      color: #4CAF50; /* Green text color when clicked */
+    }
+    #countdown {
+      font-size: 30px;
+      font-weight: bold;
+      color: yellow; /* Changed to white color */
+      background-color: transparent; /* Removed white background */
+      padding: 5px;
+      border: none; /* Removed border */
+      border-radius: 10px;
+      text-align: center;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giveaway Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Survey for Pioneers</h1>
+  </header>
+  <main>
+    <section class="hero">
+      <h2>The first 2,000 participants will receive a share of 500,000 Pi for completing this survey.</h2>
+      <div id="countdown"></div>
+      <script>
+        const duration = 86400000;
+        let startTime = new Date().getTime();
+        function updateCountdown() {
+          const currentTime = new Date().getTime();
+          const elapsed = currentTime - startTime;
+          const remaining = duration - (elapsed % duration);
+          const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+          document.getElementById("countdown").innerHTML = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+          setTimeout(updateCountdown, 1000);
+        }
+        updateCountdown();
+      </script>
+      <p></p>
+      <button><a href="form.html">Participate</a></button>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
